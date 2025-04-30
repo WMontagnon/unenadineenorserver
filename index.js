@@ -76,7 +76,7 @@ const defaultState = {
 let state = JSON.parse(JSON.stringify(defaultState));
 const socketIO = require('socket.io')(http, {
   cors: {
-      origin: "https://unenadineenor.qarzak.fr"
+      origin: "https://unenadineenor.onrender.com"
   }
 });
 
