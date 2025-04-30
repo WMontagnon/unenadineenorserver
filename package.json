@@ -2,6 +2,9 @@
     "name": "nadine-feud-server",
     "version": "0.0.1",
     "description": "Nadine Feud Server",
+    "scripts": {
+        "start": "node server.js"
+    },
     "dependencies": {
         "cors": "^2.8.5",
         "express": "^4.21.2",
