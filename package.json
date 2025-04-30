@@ -1,0 +1,10 @@
+{
+    "name": "nadine-feud-server",
+    "version": "0.0.1",
+    "description": "Nadine Feud Server",
+    "dependencies": {
+        "cors": "^2.8.5",
+        "express": "^4.21.2",
+        "socket.io": "^4.8.1"
+    }
+}
