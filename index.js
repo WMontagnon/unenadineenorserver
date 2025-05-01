@@ -77,12 +77,13 @@ let state = JSON.parse(JSON.stringify(defaultState));
 const socketIO = require('socket.io')(http, {
   cors: {
       origin: "https://unenadineenor.qarzak.fr"
+      //origin: "http://localhost:3000"
   }
 });
 
 //Add this before the app.get() block
 socketIO.on('connection', (socket) => {
-  console.log(`⚡: ${socket.id} user just connected!`);
+
   socket.emit('appInit', state);
 
   socket.on('disconnect', () => {
