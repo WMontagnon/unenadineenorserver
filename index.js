@@ -392,8 +392,7 @@ const defaultState = {
 let state = JSON.parse(JSON.stringify(defaultState));
 const socketIO = require('socket.io')(http, {
   cors: {
-      origin: "https://unenadineenor.qarzak.fr"
-      //origin: "http://localhost:3000"
+      origin: process.env.CLIENT_URL ? process.env.CLIENT_URL : "http://localhost:3000"
   }
 });
 
