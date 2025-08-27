@@ -429,7 +429,9 @@ socketIO.on('connection', (socket) => {
 
   socket.on('answerReveal', (answerId) => {
     state.questions[state.currentQuestion].answers.find((answer, index) => index === answerId).revealed = true;
-    state.points += state.questions[state.currentQuestion].answers.find((answer, index) => index === answerId).points;
+    if(state.questions[state.currentQuestion].wrongGuess < 3) {
+      state.points += state.questions[state.currentQuestion].answers.find((answer, index) => index === answerId).points;
+    }
     socket.emit('stateUpdate', state);
     socket.broadcast.emit('answerReveal', state);
   });
