@@ -657,14 +657,16 @@ socketIO.on('connection', (socket) => {
 
   socket.on('revealFinalQuestionFirstRun', ({ questionIndex, answerIndex }) => {
     state.finalQuestions[questionIndex].revealedAnswerFirstRunIndex = answerIndex;
+    state.finalPoints += state.finalQuestions[questionIndex].answers.find((answer, index) => index === answerIndex).points;
     socket.emit('stateUpdate', state);
-    socket.broadcast.emit('stateUpdate', state);
+    socket.broadcast.emit('revealFinalAnswer', state);
   });
 
   socket.on('revealFinalQuestionSecondRun', ({ questionIndex, answerIndex }) => {
     state.finalQuestions[questionIndex].revealedAnswerSecondRunIndex = answerIndex;
+    state.finalPoints += state.finalQuestions[questionIndex].answers.find((answer, index) => index === answerIndex).points;
     socket.emit('stateUpdate', state);
-    socket.broadcast.emit('stateUpdate', state);
+    socket.broadcast.emit('revealFinalAnswer', state);
   });
 });
 
