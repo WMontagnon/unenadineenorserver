@@ -669,6 +669,10 @@ socketIO.on('connection', (socket) => {
     socket.emit('stateUpdate', state);
     socket.broadcast.emit('revealFinalAnswer', state);
   });
+
+  socket.on('buzzer', () => {
+    socket.broadcast.emit('buzzer');
+  });
 });
 
 app.get('/api', (req, res) => {
