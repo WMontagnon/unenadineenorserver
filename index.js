@@ -629,11 +629,12 @@ socketIO.on('connection', (socket) => {
     timerValue = duration;
     socket.emit('startFinalTimer', duration);
     socket.broadcast.emit('startFinalTimer', duration);
+    clearInterval(timerInterval);
     timerInterval = setInterval(() => {
       timerValue--;
       socket.emit('finalTimerUpdate', timerValue);
       socket.broadcast.emit('finalTimerUpdate', timerValue);
-      if(timerValue <= 1) {
+      if(timerValue <= 0) {
         clearInterval(timerInterval);
       }
     }, 1000);
@@ -649,7 +650,7 @@ socketIO.on('connection', (socket) => {
       timerValue--;
       socket.emit('finalTimerUpdate', timerValue);
       socket.broadcast.emit('finalTimerUpdate', timerValue);
-      if(timerValue <= 1) {
+      if(timerValue <= 0) {
         clearInterval(timerInterval);
       }
     }, 1000);
